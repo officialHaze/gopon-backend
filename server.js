@@ -30,6 +30,10 @@ app.use(
 		secret: "thisismysecret.",
 		saveUninitialized: false,
 		resave: false,
+		cookie: {
+			sameSite: "none",
+			secure: true,
+		},
 	})
 );
 app.use(passport.initialize());
