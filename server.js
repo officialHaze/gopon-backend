@@ -3,6 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const session = require("express-session");
+const MemoryStore = require("memorystore")(session);
 const cors = require("cors");
 const getSecrets = require("./getSecrets");
 const uploadSecret = require("./uploadSecret");
@@ -30,6 +31,9 @@ app.use(
 		secret: "thisismysecret.",
 		saveUninitialized: false,
 		resave: false,
+		store: new MemoryStore({
+			checkPeriod: 86400000, // prune expired entries every 24h
+		}),
 		cookie: {
 			sameSite: "none",
 			secure: true,
