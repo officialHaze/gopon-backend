@@ -34,10 +34,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 require("./passport-google-config");
 
-app.get("/", (req, res) => {
-	res.send("Server working fine!!");
-});
-
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile"] }));
 
 app.get(
