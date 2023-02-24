@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
 
 mongoose.set("strictQuery", "false");
-mongoose.connect("mongodb://127.0.0.1:27017/reactSecretsDB", {
-	useNewUrlParser: true,
-});
+mongoose.connect(
+	`mongodb+srv://admin-moinak:${process.env.MONGO_DB_ATLAS_PASSWORD}@clusterv2.g2smmdo.mongodb.net/reactSecretsDB`,
+	{
+		useNewUrlParser: true,
+	}
+);
 
 const userSchema = mongoose.Schema({
 	_id: Number,

@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
@@ -24,7 +25,7 @@ app.use(
 
 app.use(
 	session({
-		secret: "thisismysecret.",
+		secret: process.env.SESSION_SECRET,
 		saveUninitialized: false,
 		resave: false,
 	})
