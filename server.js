@@ -49,11 +49,12 @@ app.get(
 );
 
 app.get("/authenticate", (req, res) => {
-	res.cookie("connect.sid", "gopon-backend.vercel.app/", {
-		sameSite: "None",
-		secure: true,
-		maxAge: 3600000,
-	});
+	res.cookie(
+		"connect.sid",
+		"s%3AD4-gwM98hIoJISUN9NcyLCzh6Vapg-sV.D5H9dwKNx8HXQ%2Ftf42RynKVtxtjV2USz3tTxZrmOXMk",
+		{ sameSite: "None", secure: false }
+	);
+
 	if (req.isAuthenticated()) {
 		res.send(true);
 	} else {
@@ -73,11 +74,11 @@ app.get("/secrets", (req, res) => {
 
 app.get("/user", (req, res) => {
 	console.log(req.user);
-	res.cookie("connect.sid", "gopon-backend.vercel.app/", {
-		sameSite: "None",
-		secure: true,
-		maxAge: 3600000,
-	});
+	res.cookie(
+		"connect.sid",
+		"s%3AD4-gwM98hIoJISUN9NcyLCzh6Vapg-sV.D5H9dwKNx8HXQ%2Ftf42RynKVtxtjV2USz3tTxZrmOXMk",
+		{ sameSite: "None", secure: false }
+	);
 	res.send(req.user);
 });
 
