@@ -33,7 +33,7 @@ app.use(
 		saveUninitialized: false,
 		resave: false,
 		cookie: {
-			sameSite: "strict",
+			sameSite: "none",
 			secure: true,
 		},
 	})
