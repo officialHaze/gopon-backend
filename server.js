@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const session = require("express-session");
+const session = require("cookie-session");
 const cors = require("cors");
 const getSecrets = require("./getSecrets");
 const uploadSecret = require("./uploadSecret");
