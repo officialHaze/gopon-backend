@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const passport = require("passport");
-const session = require("cookie-session");
+const session = require("express-session");
 const cors = require("cors");
 const getSecrets = require("./getSecrets");
 const uploadSecret = require("./uploadSecret");
@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
 	cors({
-		origin: "http://localhost:3000",
+		origin: "https://gopon-frontend.vercel.app/",
 		methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
 		credentials: true,
 		optionsSuccessStatus: 200,
@@ -35,7 +35,6 @@ app.use(
 		cookie: {
 			sameSite: "none",
 			secure: process.env.NODE_ENV === "production",
-			httpOnly: true,
 		},
 	})
 );
@@ -44,7 +43,7 @@ app.use(passport.session());
 require("./passport-google-config");
 
 app.get("/", (req, res) => {
-	res.redirect("http://localhost:3000");
+	res.redirect("https://gopon-frontend.vercel.app");
 });
 
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile"] }));
@@ -53,7 +52,7 @@ app.get(
 	"/auth/google/callback",
 	passport.authenticate("google", { failureRedirect: "/fail" }),
 	(req, res) => {
-		res.redirect("http://localhost:3000/dashboard");
+		res.redirect("https://gopon-frontend.vercel.app/dashboard");
 	}
 );
 
