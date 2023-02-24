@@ -3,7 +3,27 @@
 	"builds": [{ "src": "*.js", "use": "@vercel/node" }],
 	"routes": [{ "src": "/(.*)", "dest": "/server.js" }],
 	"functions": {
-		"*.js": {
+		"getSecret": {
+			"memory": 3008,
+			"maxDuration": 50
+		},
+		"getSecrets": {
+			"memory": 3008,
+			"maxDuration": 50
+		},
+		"mongoose-config": {
+			"memory": 3008,
+			"maxDuration": 50
+		},
+		"passport-google-config": {
+			"memory": 3008,
+			"maxDuration": 50
+		},
+		"updateComment": {
+			"memory": 3008,
+			"maxDuration": 50
+		},
+		"uploadSecret": {
 			"memory": 3008,
 			"maxDuration": 50
 		}
