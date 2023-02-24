@@ -1,3 +1,4 @@
+require("dotenv").config();
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
 const User = require("./mongoose-config");
@@ -7,7 +8,7 @@ passport.use(
 		{
 			clientID: process.env.GOOGLE_CLIENT_ID,
 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-			callbackURL: "https://gopon-backend.vercel.app/auth/google/callback",
+			callbackURL: "http://localhost:5000/auth/google/callback",
 			scope: ["profile"],
 			state: true,
 		},
