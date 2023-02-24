@@ -19,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
 	cors({
 		origin: "http://localhost:3000",
+		methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
 		credentials: true,
 		optionsSuccessStatus: 200,
 	})
@@ -30,8 +31,9 @@ app.use(
 		saveUninitialized: false,
 		resave: false,
 		cookie: {
-			sameSite: "none",
-			secure: true,
+			sameSite: false,
+			secure: process.env.NODE_ENV === "production",
+			httpOnly: true,
 		},
 	})
 );
