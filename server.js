@@ -30,6 +30,7 @@ app.use(
 		secret: "thisismysecret.",
 		saveUninitialized: false,
 		resave: false,
+		cookie: { secure: false },
 	})
 );
 app.use(passport.initialize());
@@ -40,7 +41,13 @@ app.get("/", (req, res) => {
 	res.redirect("http://localhost:3000");
 });
 
-app.get("/auth/google", passport.authenticate("google", { scope: ["profile"] }));
+app.get("/auth/google", passport.authenticate("google", { scope: ["profile"] }), (req, res) => {
+	res.cookie("connect.sid", "gopon-backend.vercel.app/", {
+		sameSite: "None",
+		secure: false,
+		maxAge: 3600000,
+	});
+});
 
 app.get(
 	"/auth/google/callback",
