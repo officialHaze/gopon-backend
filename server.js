@@ -23,11 +23,19 @@ app.use(
 	})
 );
 
+// if (process.env.NODE_ENV === "production") {
+// 	app.set("trust proxy", 1); // trust first proxy
+// 	sessionConfig.cookie.secure = true; // serve secure cookies
+// }
+
 app.use(
 	session({
 		secret: "thisismysecret.",
 		saveUninitialized: false,
 		resave: false,
+		// cookie: {
+		// 	sameSite: "none",
+		// },
 	})
 );
 app.use(passport.initialize());
@@ -52,7 +60,7 @@ app.get("/authenticate", (req, res) => {
 	res.cookie(
 		"connect.sid",
 		"s%3AD4-gwM98hIoJISUN9NcyLCzh6Vapg-sV.D5H9dwKNx8HXQ%2Ftf42RynKVtxtjV2USz3tTxZrmOXMk",
-		{ sameSite: "None", secure: false }
+		{ sameSite: "none", secure: true }
 	);
 
 	if (req.isAuthenticated()) {
@@ -77,7 +85,7 @@ app.get("/user", (req, res) => {
 	res.cookie(
 		"connect.sid",
 		"s%3AD4-gwM98hIoJISUN9NcyLCzh6Vapg-sV.D5H9dwKNx8HXQ%2Ftf42RynKVtxtjV2USz3tTxZrmOXMk",
-		{ sameSite: "None", secure: false }
+		{ sameSite: "none", secure: true }
 	);
 	res.send(req.user);
 });
