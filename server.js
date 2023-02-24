@@ -25,17 +25,11 @@ app.use(
 	})
 );
 
-app.set("trust proxy", 1);
-
 app.use(
 	session({
 		secret: "thisismysecret.",
 		saveUninitialized: false,
 		resave: false,
-		cookie: {
-			sameSite: "none",
-			secure: process.env.NODE_ENV === "production",
-		},
 	})
 );
 app.use(passport.initialize());
