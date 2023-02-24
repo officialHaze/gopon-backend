@@ -6,8 +6,8 @@ const User = require("./mongoose-config");
 passport.use(
 	new GoogleStrategy(
 		{
-			clientID: process.env.GOOGLE_CLIENT_ID,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			clientID: "1069915367570-oil6ja7h6hvlu8bih52iq1irug6f1vc9.apps.googleusercontent.com",
+			clientSecret: "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",
 			callbackURL: "https://gopon-backend.vercel.app/auth/google/callback",
 			scope: ["profile"],
 			state: true,
