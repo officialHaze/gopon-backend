@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
 	cors({
-		origin: "https://gopon-frontend.vercel.app/",
+		origin: "https://gopon-frontend.vercel.app",
 		methods: ["POST", "PUT", "GET", "OPTIONS", "HEAD"],
 		credentials: true,
 		optionsSuccessStatus: 200,
