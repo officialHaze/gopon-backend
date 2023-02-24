@@ -68,7 +68,7 @@ app.get("/secrets", (req, res) => {
 
 app.get("/user", (req, res) => {
 	console.log(req.user);
-	res.send(req.user);
+	req.user !== undefined && res.send(req.user);
 });
 
 app.get("/userProfileImg", (req, res) => {
