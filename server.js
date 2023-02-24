@@ -33,21 +33,12 @@ app.use(
 		cookie: {
 			sameSite: "none",
 			secure: true,
+			httpOnly: true,
 		},
 	})
 );
 app.use(passport.initialize());
-app.use(
-	passport.session({
-		secret: "thisismysecret.",
-		saveUninitialized: false,
-		resave: false,
-		cookie: {
-			sameSite: "none",
-			secure: true,
-		},
-	})
-);
+app.use(passport.session());
 require("./passport-google-config");
 
 app.get("/", (req, res) => {
