@@ -6,9 +6,9 @@ const User = require("./mongoose-config");
 passport.use(
 	new GoogleStrategy(
 		{
-			clientID: "1069915367570-oil6ja7h6hvlu8bih52iq1irug6f1vc9.apps.googleusercontent.com",
-			clientSecret: "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",
-			callbackURL: "https://gopon-server.onrender.com/auth/google/callback",
+			clientID: process.env.GOOGLE_CLIENT_ID,
+			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+			callbackURL: process.env.GOOGLE_CALLBACK_URL,
 			scope: ["profile"],
 			state: true,
 		},
