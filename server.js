@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use(
 	cors({
-		origin: "https://gopon-frontend.vercel.app",
+		origin: "https://gopon.vercel.app",
 		credentials: true,
 	})
 );
@@ -46,7 +46,7 @@ app.use(passport.session());
 require("./passport-google-config");
 
 app.get("/", (req, res) => {
-	res.redirect("https://gopon-frontend.vercel.app");
+	res.redirect("https://gopon.vercel.app");
 });
 
 app.get("/auth/google", passport.authenticate("google", { scope: ["profile"] }));
@@ -55,7 +55,7 @@ app.get(
 	"/auth/google/callback",
 	passport.authenticate("google", { failureRedirect: "/fail" }),
 	(req, res) => {
-		res.redirect("https://gopon-frontend.vercel.app/dashboard");
+		res.redirect("https://gopon.vercel.app/dashboard");
 	}
 );
 
